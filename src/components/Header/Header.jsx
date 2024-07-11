@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <header className="header">
       <h1>ForosDEV</h1>
-      <nav>
+      <nav className="nav">
         <ul>
           <li>
             <a href="">Inicio</a>
@@ -20,7 +20,9 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-      <a href="#">Iniciar Sesión</a>
+      <a className="login" href="#">
+        Iniciar Sesión
+      </a>
     </header>
   );
 };
