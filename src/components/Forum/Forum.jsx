@@ -7,7 +7,7 @@ const Forum = () => {
     <>
       <Header />
       <main>
-        <div className="container">
+        <div className="forum-container">
           <div className="left-container">
             <div className="menu">
               <button>Nuevo Post</button>
