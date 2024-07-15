@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../Header/Header";
 import "./Forum.css";
 import Post from "../Post/Post";
 import Footer from "../Footer/Footer";
-import postsData from "./testData.json"; // Importar datos del archivo JSON
+import postsData from "./testData.json";
 
 const Forum = () => {
   const [posts, setPosts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     setPosts(postsData);
@@ -17,12 +18,23 @@ const Forum = () => {
     setSelectedCategory(event.target.value);
   };
 
-  const filteredPosts = selectedCategory
-    ? posts.filter(
-        (post) =>
-          post.category.toLowerCase() === selectedCategory.toLocaleLowerCase()
-      )
-    : posts;
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredPosts = posts.filter((post) => {
+    if (
+      selectedCategory &&
+      post.category.toLowerCase() !== selectedCategory.toLowerCase()
+    ) {
+      return false;
+    }
+    const searchTermLower = searchTerm.toLowerCase();
+    return (
+      post.title.toLowerCase().includes(searchTermLower) ||
+      post.text.toLowerCase().includes(searchTermLower)
+    );
+  });
 
   return (
     <>
@@ -41,7 +53,12 @@ const Forum = () => {
           <div className="right-container">
             <div className="search-container">
               <div className="search-bar">
-                <input type="text" placeholder="Buscar" />
+                <input
+                  type="text"
+                  placeholder="Buscar"
+                  value={searchTerm}
+                  onChange={handleSearchChange}
+                />
               </div>
               <div className="filter">
                 <select
