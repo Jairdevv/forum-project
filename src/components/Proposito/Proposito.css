@@ -1,0 +1,37 @@
+.purpose-container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--black);
+  padding: 50px 10vw;
+  height: calc(100vh - 64px);
+}
+
+.purpose-title {
+  color: var(--white);
+}
+
+.purpose-text {
+  color: var(--white);
+}
+
+.objetives {
+  display: flex;
+  margin-top: 5rem;
+  gap: 100px;
+}
+
+.objetives-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.objetives-container h2,
+.objetives-container li {
+  color: var(--white);
+}
+
+.objetives-image-container img {
+  border-radius: 25px;
+}

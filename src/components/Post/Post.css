@@ -1,0 +1,44 @@
+.post-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 3rem;
+  gap: 100px;
+}
+
+.post-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.post-category h4 {
+  display: inline;
+  padding: 5px 10px;
+  border-radius: 25px;
+  background: #1ca9c977;
+  color: var(--white);
+}
+
+.post-title h2 {
+  color: var(--white);
+}
+
+.post-text p {
+  color: var(--white);
+}
+
+.post-author-date p {
+  color: var(--white);
+}
+
+.post-author-date em {
+  color: var(--primary-color);
+}
+
+.post-image {
+  margin: auto;
+}
+
+.post-image img {
+  border-radius: 25px;
+}
