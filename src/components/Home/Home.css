@@ -44,4 +44,5 @@ main {
   font-size: 1em;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin-top: 1rem;
 }
