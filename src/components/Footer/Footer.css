@@ -1,0 +1,21 @@
+.footer {
+  width: 100%;
+  background-color: var(--background);
+}
+.footer .grupo1 {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 45px 0px;
+}
+
+.footer .grupo1 .box h2 {
+  text-align: center;
+  color: var(--white);
+  margin-bottom: 25px;
+  font-size: 20px;
+}
+.footer .grupo1 .box p {
+  color: var(--white);
+  margin-bottom: 10px;
+}

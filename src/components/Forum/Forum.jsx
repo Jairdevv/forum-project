@@ -1,6 +1,7 @@
 import Header from "../Header/Header";
 import "./Forum.css";
 import Post from "../Post/Post";
+import Footer from "../Footer/Footer";
 
 const Forum = () => {
   return (
@@ -44,6 +45,7 @@ const Forum = () => {
           </div>
         </div>
       </main>
+      <Footer />
     </>
   );
 };
