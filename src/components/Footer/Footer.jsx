@@ -3,9 +3,9 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <>
-      <footer class="footer">
-        <div class="grupo1">
-          <div class="box">
+      <footer className="footer">
+        <div className="grupo1">
+          <div className="box">
             <h2>Sobre Nosotros</h2>
             <p>
               ¡Bienvenidos a Foros Dev! Somos una comunidad vibrante y
@@ -29,7 +29,7 @@ const Footer = () => {
             </p>
           </div>
         </div>
-        <div class="grupo2">
+        <div className="grupo2">
           <small>
             &copy; 2024 <b>ForosDEV</b> - Todos los Derechos Reservados.
           </small>

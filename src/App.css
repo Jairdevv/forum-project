@@ -8,6 +8,10 @@
   text-decoration: none;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --black: #333;
   --primary-color: #1ca9c9;

@@ -1,7 +1,7 @@
 .home {
   position: relative;
   background-color: rgba(44, 47, 48, 0.4);
-  background: url("../../assets/background3.webp") no-repeat center/cover;
+  background: url("../../../assets/background3.webp") no-repeat center/cover;
   height: calc(100vh - 63px);
   width: 100%;
 }
