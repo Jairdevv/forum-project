@@ -1,5 +1,6 @@
 import Header from "../Header/Header";
 import "./Home.css";
+import Footer from "../Footer/Footer";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
           </div>
         </section>
       </main>
+      <Footer />
     </>
   );
 };

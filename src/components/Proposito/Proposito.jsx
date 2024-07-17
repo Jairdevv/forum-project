@@ -1,6 +1,7 @@
 import Header from "../Header/Header";
 import "./Proposito.css";
 import image from "../../assets/developers.jfif";
+import Footer from "../Footer/Footer";
 
 const Proposito = () => {
   return (
@@ -46,6 +47,7 @@ const Proposito = () => {
           </div>
         </div>
       </main>
+      <Footer />
     </>
   );
 };
