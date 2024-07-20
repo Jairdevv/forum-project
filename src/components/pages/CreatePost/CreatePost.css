@@ -1,0 +1,55 @@
+.right-content {
+  width: 75%;
+  background-color: #3a3a3a;
+  padding: 2em;
+  border-radius: 10px;
+}
+
+.form-group {
+  margin-bottom: 1.5em;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5em;
+  color: #bbbbbb;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.5em;
+  border: none;
+  border-radius: 5px;
+  background-color: #525252;
+  color: #ffffff;
+  font-size: 1em;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #aaaaaa;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.buttons .cancel {
+  background-color: #555555;
+  color: #ffffff;
+}
+
+.buttons .submit {
+  background-color: #9f4bc8;
+  color: #ffffff;
+}

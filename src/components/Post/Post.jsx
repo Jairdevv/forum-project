@@ -1,4 +1,3 @@
-import Header from "../Header/Header";
 import "./Post.css";
 import image from "../../assets/code-bg.jfif";
 

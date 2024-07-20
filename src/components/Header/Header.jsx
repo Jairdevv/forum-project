@@ -10,14 +10,14 @@ const Header = () => {
     <>
       <header className="header">
         <h2 className="logo">
-          <Link to="/home">
+          <Link to="/">
             Foros<span>DEV</span>
           </Link>
         </h2>
         <nav className="nav">
           <ul>
             <li>
-              <Link to="/home">Inicio</Link>
+              <Link to="/">Inicio</Link>
             </li>
             <li>
               <Link to="/forum">Foro</Link>

@@ -1,0 +1,60 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #2d2d2d;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color: #424242;
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 1em;
+}
+
+.login-button {
+  background-color: #3f9ec7;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 2em;
+}
+
+.contact-card {
+  background-color: #3a3a3a;
+  padding: 2em;
+  border-radius: 10px;
+  width: 50%;
+}
+
+.contact-card h2 {
+  margin-top: 0;
+}
+
+.contact-info {
+  margin: 1em 0;
+}
+
+.contact-info label {
+  display: block;
+  color: #bbbbbb;
+  margin-bottom: 0.5em;
+}
+
+.contact-info span {
+  display: block;
+  margin-bottom: 1em;
+  font-size: 1.2em;
+}
