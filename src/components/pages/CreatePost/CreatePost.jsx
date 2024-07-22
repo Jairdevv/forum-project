@@ -1,10 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./CreatePost.css";
+import axios from "axios";
 
 const CreatePost = ({ onCancel }) => {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [text, setText] = useState("");
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategoriesAndPosts = async () => {
+      try {
+        const [categoriesResponse, postsResponse] = await Promise.all([
+          axios.get("http://localhost:5000/api/categories"),
+        ]);
+        setCategories(categoriesResponse.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchCategoriesAndPosts();
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -35,9 +52,11 @@ const CreatePost = ({ onCancel }) => {
             <option value="" disabled selected>
               Escoge...
             </option>
-            <option value="javascript">JavaScript</option>
-            <option value="python">Python</option>
-            <option value="java">Java</option>
+            {categories.map((category, index) => (
+              <option key={index} value={category.nombre}>
+                {category.nombre}
+              </option>
+            ))}
           </select>
         </div>
         <div className="form-group">
