@@ -29,7 +29,7 @@ const SignUpModal = ({ isVisible, onClose }) => {
       onClose();
     } catch (err) {
       setError(
-        err.response ? err.response.data.message : "Registration failed"
+        err.response ? err.response.data.message : "Registración fallida"
       );
     }
   };

@@ -3,7 +3,6 @@ import Header from "../../Header/Header";
 import "./Forum.css";
 import Post from "../../Post/Post";
 import Footer from "../../Footer/Footer";
-import postsData from "./testData.json";
 import CreatePost from "../CreatePost/CreatePost";
 import axios from "axios";
 
