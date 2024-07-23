@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import Header from "../../Header/Header";
 import "./Forum.css";
 import Post from "../../Post/Post";
@@ -21,7 +22,10 @@ const Forum = () => {
           axios.get("http://localhost:5000/api/posts"),
         ]);
         setCategories(categoriesResponse.data);
-        setPosts(postsResponse.data);
+        const sortedPosts = postsResponse.data.sort(
+          (a, b) => new Date(b.fecha_creacion) - new Date(a.fecha_creacion)
+        );
+        setPosts(sortedPosts);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -57,10 +61,6 @@ const Forum = () => {
           <div className="left-container">
             <div className="menu">
               <button onClick={() => setView("createPost")}>Nuevo Post</button>
-              <button onClick={() => setView("posts")}>Más recientes</button>
-              <button onClick={() => setView("posts")}>Todos los posts</button>
-              <button onClick={() => setView("posts")}>Respuestas</button>
-              <button onClick={() => setView("posts")}>Destacados</button>
             </div>
           </div>
           <div className="right-container">

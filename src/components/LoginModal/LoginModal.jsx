@@ -26,6 +26,8 @@ const LoginModal = ({ isVisible, onClose }) => {
         email,
         password,
       });
+      localStorage.setItem("userToken", response.data.token);
+      localStorage.setItem("userId", response.data.userId);
       setSuccess(response.data.message);
       setError("");
       onClose();

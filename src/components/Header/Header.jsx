@@ -1,10 +1,17 @@
 import { useState } from "react";
 import "./Header.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LoginModal from "../LoginModal/LoginModal";
 
 const Header = () => {
   const [isModalVisible, setModalVisible] = useState(false);
+  const navigate = useNavigate();
+  const userToken = localStorage.getItem("userToken");
+
+  const handleProfileClick = () => {
+    localStorage.removeItem("userToken");
+    navigate("/");
+  };
 
   return (
     <>
@@ -25,14 +32,23 @@ const Header = () => {
             <li>
               <Link to="/proposito">Propósito</Link>
             </li>
-            <li>
-              <Link to="/contacto">Contacto</Link>
-            </li>
+            {userToken && (
+              <li>
+                <Link to="/contacto">Mostrar Perfil</Link>{" "}
+                {/* Cambiado según requisito */}
+              </li>
+            )}
           </ul>
         </nav>
-        <a className="login" onClick={() => setModalVisible(true)}>
-          Iniciar Sesión
-        </a>
+        {userToken ? (
+          <a className="login" onClick={handleProfileClick}>
+            Cerrar Sesión
+          </a>
+        ) : (
+          <a className="login" onClick={() => setModalVisible(true)}>
+            Iniciar Sesión
+          </a>
+        )}
       </header>
       <LoginModal
         isVisible={isModalVisible}
