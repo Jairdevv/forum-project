@@ -1,19 +1,37 @@
 import { useState, useEffect } from "react";
+
 import Header from "../../Header/Header";
 import "./Forum.css";
 import Post from "../../Post/Post";
 import Footer from "../../Footer/Footer";
-import postsData from "./testData.json";
 import CreatePost from "../CreatePost/CreatePost";
+import axios from "axios";
 
 const Forum = () => {
   const [posts, setPosts] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
-  const [view, setView] = useState("posts"); // Estado para controlar la vista
+  const [view, setView] = useState("posts");
 
   useEffect(() => {
-    setPosts(postsData);
+    const fetchCategoriesAndPosts = async () => {
+      try {
+        const [categoriesResponse, postsResponse] = await Promise.all([
+          axios.get("http://localhost:5000/api/categories"),
+          axios.get("http://localhost:5000/api/posts"),
+        ]);
+        setCategories(categoriesResponse.data);
+        const sortedPosts = postsResponse.data.sort(
+          (a, b) => new Date(b.fecha_creacion) - new Date(a.fecha_creacion)
+        );
+        setPosts(sortedPosts);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchCategoriesAndPosts();
   }, []);
 
   const handleCategoryChange = (event) => {
@@ -25,16 +43,13 @@ const Forum = () => {
   };
 
   const filteredPosts = posts.filter((post) => {
-    if (
-      selectedCategory &&
-      post.category.toLowerCase() !== selectedCategory.toLowerCase()
-    ) {
+    if (selectedCategory !== "" && post.categoria_nombre !== selectedCategory) {
       return false;
     }
     const searchTermLower = searchTerm.toLowerCase();
     return (
-      post.title.toLowerCase().includes(searchTermLower) ||
-      post.text.toLowerCase().includes(searchTermLower)
+      post.titulo.toLowerCase().includes(searchTermLower) ||
+      post.contenido.toLowerCase().includes(searchTermLower)
     );
   });
 
@@ -46,10 +61,6 @@ const Forum = () => {
           <div className="left-container">
             <div className="menu">
               <button onClick={() => setView("createPost")}>Nuevo Post</button>
-              <button onClick={() => setView("posts")}>Más recientes</button>
-              <button onClick={() => setView("posts")}>Todos los posts</button>
-              <button onClick={() => setView("posts")}>Respuestas</button>
-              <button onClick={() => setView("posts")}>Destacados</button>
             </div>
           </div>
           <div className="right-container">
@@ -74,21 +85,30 @@ const Forum = () => {
                       value={selectedCategory}
                     >
                       <option value="">Todos</option>
-                      <option value="javascript">JavaScript</option>
-                      <option value="python">Python</option>
-                      <option value="java">Java</option>
+                      {categories.map((category, index) => (
+                        <option key={index} value={category.nombre}>
+                          {category.nombre}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 </div>
                 <div className="posts">
-                  {filteredPosts.map((post, index) => (
+                  {filteredPosts.map((post) => (
                     <Post
-                      key={index}
-                      category={post.category}
-                      title={post.title}
-                      text={post.text}
-                      author={post.author}
-                      date={post.date}
+                      key={post.id}
+                      category={post.categoria_nombre}
+                      title={post.titulo}
+                      text={post.contenido}
+                      author={post.usuario_nombre}
+                      date={new Date(post.fecha_creacion).toLocaleDateString(
+                        "es-ES",
+                        {
+                          day: "2-digit",
+                          month: "2-digit",
+                          year: "numeric",
+                        }
+                      )}
                     />
                   ))}
                 </div>

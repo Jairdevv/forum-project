@@ -1,15 +1,58 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./CreatePost.css";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const CreatePost = ({ onCancel }) => {
+  const navigate = useNavigate();
+  const userToken = localStorage.getItem("userToken");
   const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState(""); // Este estado ahora almacenará el ID de la categoría seleccionada
   const [text, setText] = useState("");
+  const [categories, setCategories] = useState([]);
 
-  const handleSubmit = (event) => {
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const categoriesResponse = await axios.get(
+          "http://localhost:5000/api/categories"
+        );
+        setCategories(categoriesResponse.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+  useEffect(() => {
+    if (!userToken) {
+      navigate("/");
+    }
+  }, [navigate, userToken]);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log({ title, category, text });
-    onCancel();
+
+    const userId = localStorage.getItem("userId");
+
+    if (!userId) {
+      console.error("No user ID found");
+      return;
+    }
+
+    try {
+      console.log(text);
+      const response = await axios.post("http://localhost:5000/api/posts", {
+        title,
+        category,
+        text,
+        userId,
+      });
+
+      onCancel();
+    } catch (error) {}
   };
 
   return (
@@ -35,9 +78,11 @@ const CreatePost = ({ onCancel }) => {
             <option value="" disabled selected>
               Escoge...
             </option>
-            <option value="javascript">JavaScript</option>
-            <option value="python">Python</option>
-            <option value="java">Java</option>
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.nombre}
+              </option>
+            ))}
           </select>
         </div>
         <div className="form-group">
