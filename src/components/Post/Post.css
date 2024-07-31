@@ -25,6 +25,10 @@
 
 .post-text p {
   color: var(--white);
+  width: 600px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .post-author-date p {

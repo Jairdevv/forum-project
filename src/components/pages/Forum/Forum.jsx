@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 import Header from "../../Header/Header";
 import "./Forum.css";
 import Post from "../../Post/Post";
@@ -97,6 +96,7 @@ const Forum = () => {
                   {filteredPosts.map((post) => (
                     <Post
                       key={post.id}
+                      id={post.id}
                       category={post.categoria_nombre}
                       title={post.titulo}
                       text={post.contenido}

@@ -4,6 +4,7 @@ import Home from "./components/pages/Home/Home";
 import Proposito from "./components/pages/Proposito/Proposito";
 import Forum from "./components/pages/Forum/Forum";
 import Contacto from "./components/pages/Contacto/Contacto";
+import PostDetail from "./components/PostDetail/PostDetail";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/proposito" element={<Proposito />} />
         <Route path="/forum" element={<Forum />} />
         <Route path="/contacto" element={<Contacto />} />
+        <Route path="/posts/:id" element={<PostDetail />} />
       </Routes>
     </Router>
   );

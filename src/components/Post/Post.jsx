@@ -1,7 +1,8 @@
 import "./Post.css";
 import image from "../../assets/code-bg.jfif";
+import { Link } from "react-router-dom";
 
-const Post = ({ category, title, text, author, date }) => {
+const Post = ({ category, title, text, author, date, id }) => {
   return (
     <>
       <div className="post-container">
@@ -22,7 +23,9 @@ const Post = ({ category, title, text, author, date }) => {
           </div>
         </div>
         <div className="post-image">
-          <img src={image} alt="imagen" />
+          <Link to={`/posts/${id}`}>
+            <img src={image} alt="imagen" />
+          </Link>
         </div>
       </div>
     </>
