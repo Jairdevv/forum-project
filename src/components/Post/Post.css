@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   padding: 3rem;
-  gap: 100px;
 }
 
 .post-content {

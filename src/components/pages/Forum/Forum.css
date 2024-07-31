@@ -47,6 +47,7 @@
   flex-direction: column;
   width: 75%;
   gap: 50px;
+  margin: 0 auto;
 }
 
 .search-container {
@@ -80,7 +81,6 @@
 /* Filtro */
 
 .filter {
-  width: 15%;
   background-color: var(--background);
   display: flex;
   justify-content: center;
@@ -97,4 +97,11 @@
 .posts {
   background-color: var(--background);
   border-radius: 25px;
+}
+
+@media screen and (min-width: 1024px) {
+  .forum-container {
+    padding: 50px 2vw;
+    gap: 20px;
+  }
 }
